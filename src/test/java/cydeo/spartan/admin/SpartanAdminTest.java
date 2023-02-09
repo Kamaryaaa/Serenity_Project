@@ -48,7 +48,6 @@ public class SpartanAdminTest {
 
         System.out.println("lastResponse().jsonPath().getString(\"name[0]\") = " + lastResponse().jsonPath().getString("name[0]"));
 
-
     }
 
     @DisplayName("GET /spartans/{id} with SERENITY REST")
