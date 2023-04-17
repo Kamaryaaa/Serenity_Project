@@ -20,7 +20,7 @@ public class SpartanAdminTest {
 
     @BeforeAll
     public static void init(){
-        RestAssured.baseURI = "http://54.86.2.212:7000/api";
+        RestAssured.baseURI = "http://54.237.226.155:7000/api";
     }
 
     @DisplayName("GET /spartans with PURE REST ASSURED")
@@ -56,16 +56,16 @@ public class SpartanAdminTest {
     public void test3(){
         SerenityRest.given().accept(ContentType.JSON)
                 .auth().basic("admin","admin")
-                .pathParam("id",10)
+                .pathParam("id",20)
                 .when().get("/spartans/{id}");
 
         //lastResponse() --> response --> Serenity Rest will generate after sending request
         //and store response information without saving in a variable
 
         //ASSERTIONS IN SERENITY
-        /*
-            Ensure.that -->it is method that comes from Serenity to put assertions into Serenity
-         */
+
+           // Ensure.that -->it is method that comes from Serenity to put assertions into Serenity
+
 
         Ensure.that("Status code is 200",vRes -> vRes.statusCode(200));
         Ensure.that("Status code is 200",then -> then.statusCode(200));
@@ -74,10 +74,11 @@ public class SpartanAdminTest {
         //Ensure that content type is Json
         Ensure.that("Content-type is JSON",vRes->vRes.contentType(ContentType.JSON));
         //Ensure that id is 10
-        Ensure.that("Spartan ID is 10",vRes -> vRes.body("id",is(10)));
+        Ensure.that("Spartan ID is 20",vRes -> vRes.body("id",is(20)));
         //Ensure that Transfer-Encoding: chunked
         Ensure.that("Header:Transfer-Encoding is chunked",then -> then.header("Transfer-Encoding",is("chunked")));
 
     }
+
 
 }
